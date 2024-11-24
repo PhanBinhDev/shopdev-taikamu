@@ -1,0 +1,210 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  ADMIN
+  SHOP_OWNER
+  CUSTOMER
+}
+
+enum OrderStatus {
+  PENDING
+  PROCESSING
+  SHIPPED
+  DELIVERED
+  CANCELLED
+}
+
+enum ApiKeyStatus {
+  ACTIVE
+  EXPIRED
+  REVOKED
+}
+
+model User {
+  id       String   @id @default(uuid())
+  name     String
+  email    String   @unique
+  password String
+  imageUrl String?
+  isActive Boolean  @default(false)
+  role     UserRole @default(CUSTOMER)
+
+  shop            Shop?
+  orders          Order[]
+  reviews         Review[]
+  shippingAddress Address[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ApiKey {
+  id             String       @id @default(uuid())
+  key            String       @unique
+  shopId         String
+  shop           Shop         @relation(fields: [shopId], references: [id])
+  status         ApiKeyStatus @default(ACTIVE)
+  expiresAt      DateTime?
+  lastUsed       DateTime?
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  whitelistedIPs String[]
+  permissions    Json?
+}
+
+model Shop {
+  id          String    @id @default(uuid())
+  name        String
+  description String
+  ownerId     String    @unique
+  owner       User      @relation(fields: [ownerId], references: [id])
+  apiKeys     ApiKey[]
+  products    Product[]
+  orders      Order[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Category {
+  id            String     @id @default(uuid())
+  name          String
+  description   String?
+  parentId      String?
+  parent        Category?  @relation("SubCategories", fields: [parentId], references: [id])
+  subCategories Category[] @relation("SubCategories")
+  products      Product[]
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+}
+
+model Review {
+  id        String   @id @default(uuid())
+  rating    Int
+  comment   String?
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  productId String
+  product   Product  @relation(fields: [productId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Product {
+  id          String             @id @default(uuid())
+  name        String
+  description String
+  shopId      String
+  shop        Shop               @relation(fields: [shopId], references: [id])
+  categoryId  String
+  category    Category           @relation(fields: [categoryId], references: [id])
+  createdAt   DateTime           @default(now())
+  updatedAt   DateTime           @updatedAt
+  reviews     Review[]
+  images      ProductImage[]
+  variants    ProductVariant[]
+  attributes  ProductAttribute[]
+}
+
+model ProductVariant {
+  id              String                  @id @default(uuid())
+  sku             String                  @unique
+  price           Decimal
+  stockQuantity   Int
+  productId       String
+  product         Product                 @relation(fields: [productId], references: [id])
+  createdAt       DateTime                @default(now())
+  updatedAt       DateTime                @updatedAt
+  orderItems      OrderItem[]
+  attributeValues ProductAttributeValue[]
+  ProductImage    ProductImage[]
+}
+
+model ProductAttribute {
+  id        String                  @id @default(uuid())
+  name      String
+  productId String
+  product   Product                 @relation(fields: [productId], references: [id])
+  values    ProductAttributeValue[]
+  createdAt DateTime                @default(now())
+  updatedAt DateTime                @updatedAt
+}
+
+model ProductAttributeValue {
+  id          String           @id @default(uuid())
+  value       String
+  attributeId String
+  attribute   ProductAttribute @relation(fields: [attributeId], references: [id])
+  variants    ProductVariant[]
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+
+  @@unique([attributeId, value])
+}
+
+model ProductImage {
+  id        String          @id @default(uuid())
+  url       String
+  productId String
+  product   Product         @relation(fields: [productId], references: [id])
+  variantId String?
+  variant   ProductVariant? @relation(fields: [variantId], references: [id])
+  createdAt DateTime        @default(now())
+  updatedAt DateTime        @updatedAt
+}
+
+model Order {
+  id                String      @id @default(uuid())
+  userId            String
+  user              User        @relation(fields: [userId], references: [id])
+  shopId            String
+  shop              Shop        @relation(fields: [shopId], references: [id])
+  status            OrderStatus
+  total             Decimal
+  createdAt         DateTime    @default(now())
+  updatedAt         DateTime    @updatedAt
+  orderItems        OrderItem[]
+  shippingAddressId String
+  shippingAddress   Address     @relation(fields: [shippingAddressId], references: [id])
+}
+
+model Address {
+  id         String   @id @default(uuid())
+  street     String
+  city       String
+  state      String
+  postalCode String
+  country    String
+  userId     String
+  user       User     @relation(fields: [userId], references: [id])
+  orders     Order[]
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model OrderItem {
+  id        String         @id @default(uuid())
+  orderId   String
+  order     Order          @relation(fields: [orderId], references: [id])
+  variantId String
+  variant   ProductVariant @relation(fields: [variantId], references: [id])
+  quantity  Int
+  price     Decimal
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+}
+
+// ... (other models remain unchanged)

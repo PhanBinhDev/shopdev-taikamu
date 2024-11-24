@@ -1,0 +1,6 @@
+2024-11-14 10:24:25:2425 [[35mhttp[39m]:: [35mGET /favicon.ico null 13ms[39m
+2024-11-14 10:26:37:2637 [[31merror[39m]:: [31mRoute not found[39m
+2024-11-14 10:26:37:2637 [[35mhttp[39m]:: [35mGET /api/v1/user/test null 18ms[39m
+2024-11-14 10:27:34:2734 [[31merror[39m]:: [31mRoute /api/v1/user/test not found[39m
+2024-11-14 10:27:34:2734 [[35mhttp[39m]:: [35mGET /api/v1/user/test null 11ms[39m
+2024-11-14 13:23:21:2321 [[31merror[39m]:: [31mInvalid status code: fail[39m
