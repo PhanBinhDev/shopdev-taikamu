@@ -1,23 +1,19 @@
 import { Request, Response } from 'express-serve-static-core'
-import { StatusCodes } from 'http-status-codes'
-import { CreateUserDto } from '~/dtos/CreateUser.dto'
+import { CREATED, SuccessResponse } from '~/core/success.response'
 import userService from '~/services/user.service'
-import { CreateUserQueryParams } from '~/types/query-params'
-import { User } from '~/types/response'
 import { asyncHandler } from '~/utils/asyncHandler'
-import { AppError } from '~/utils/errors'
-import { SuccessResponse, CREATED } from '~/utils/success'
 
 const getUser = async (req: Request, res: Response) => {
-  res.send('Hello')
+  res.json({
+    message: 'Hello'
+  })
 }
 
-const registerUser = asyncHandler(
-  async (req: Request<{}, {}, CreateUserDto>, res: Response<User>) => {
-    new CREATED({
-      message: 'User created successfully',
-      metadata: await userService.registerUser(req.body)
-    }).send(res)
-  }
-)
-export { getUser, registerUser }
+const createUser = asyncHandler(async (req: Request, res: Response) => {
+  new CREATED({
+    message: 'User created successfully',
+    metadata: await userService.createUser(req.body)
+  }).send(res)
+})
+
+export { getUser, createUser }

@@ -1,8 +1,7 @@
-import express from 'express'
+import express, { Request, Response, NextFunction } from 'express'
 import helmet from 'helmet'
 import cors from 'cors'
 import morgan from 'morgan'
-import errorHandler from 'errorhandler'
 import path from 'path'
 import session from 'express-session'
 
@@ -11,8 +10,8 @@ import config from '~/configs/env.config'
 
 import { loggerMiddleware } from './middlewares/logger.middleware'
 import { rateLimiter } from './middlewares/rateLimiter.middleware'
-import { ErrorRequest } from './middlewares/error.middleware'
-import { NotFoundError } from './utils/errors'
+import { errorHandler } from './middlewares/error.middleware'
+import { NotFoundError } from './core/error.response'
 
 export function createApp() {
   // Config isProduction variable
@@ -21,9 +20,13 @@ export function createApp() {
 
   app.use(
     cors({
-      credentials: true
+      credentials: true,
+      origin: isProduction
+        ? 'https://your-frontend-url.com'
+        : 'http://localhost:5173'
     })
   )
+
   // config app
   app.use(morgan('dev'))
   app.use(helmet())
@@ -43,15 +46,17 @@ export function createApp() {
   // Error handling & middlewares
   app.use(loggerMiddleware)
   app.use(rateLimiter)
-  if (!isProduction) {
-    app.use(errorHandler())
-  }
 
   app.use((req, res, next) => {
-    next(new NotFoundError(`Route ${req.originalUrl} not found`))
+    next(
+      new NotFoundError({
+        message: `Route ${req.originalUrl} not found`,
+        statusCode: 'NOT_FOUND'
+      })
+    )
   })
 
-  app.use(ErrorRequest)
+  app.use(errorHandler)
 
   // serve static files from React
   if (isProduction) {

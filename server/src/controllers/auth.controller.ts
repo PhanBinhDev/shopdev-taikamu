@@ -1,22 +1,11 @@
 import { NextFunction, Request, Response } from 'express'
-import { SuccessResponse } from '~/utils/success'
+import AuthService from '~/services/auth.service'
+import { SuccessResponse } from '~/core/success.response'
+import { asyncHandler } from '~/utils/asyncHandler'
 
-export const login = async (req: Request, res: Response) => {
-  console.log({ req })
+export const signIn = asyncHandler(async (req: Request, res: Response) => {
   new SuccessResponse({
     message: 'Logged in successfully',
-    metadata: { user: req.user }
-  })
-}
-export const logout = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
-  req.logout((err) => {
-    if (err) {
-      return next(err)
-    }
-    res.json({ message: 'Logged out' })
-  })
-}
+    metadata: await AuthService.signIn(req.body)
+  }).send(res)
+})

@@ -1,25 +1,20 @@
 import { Request, Response, NextFunction, ErrorRequestHandler } from 'express'
-import { StatusCodes } from 'http-status-codes'
-import { AppError } from '~/utils/errors'
+import { BadRequestError, ErrorResponse } from '~/core/error.response'
 import Logger from '~/utils/logger'
 
-export const ErrorRequest: ErrorRequestHandler = (
+// Middleware xử lý lỗi
+export const errorHandler: ErrorRequestHandler = (
   err: Error,
   req: Request,
   res: Response,
   next: NextFunction
-): void => {
+) => {
   Logger.error(err.message, { stack: err.stack })
 
-  if (err instanceof AppError) {
-    res.status(err.statusCode).json({
-      status: err.status,
-      message: err.message
-    })
+  if (err instanceof ErrorResponse) {
+    err.send(res)
   } else {
-    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-      status: 'error',
-      error: 'Internal Server Error'
-    })
+    const error = new BadRequestError({ message: 'Internal Server Error' })
+    error.send(res)
   }
 }

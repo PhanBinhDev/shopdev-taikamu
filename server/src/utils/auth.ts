@@ -1,33 +1,43 @@
 import crypto from 'crypto'
 import { NextFunction } from 'express'
 import { HEADER } from '~/constants/header'
-import { ForbiddenError } from './errors'
+import { ForbiddenError } from '../core/error.response'
+import JWT from 'jsonwebtoken'
+import config from '~/configs/env.config'
 
-export class CryptoService {
-  static generateKeyPair(): { privateKey: string; publicKey: string } {
-    const privateKey = crypto.randomBytes(32).toString('hex')
-    const publicKey = crypto
-      .createHash('sha256')
-      .update(privateKey)
-      .digest('hex')
-    return { privateKey, publicKey }
+// static generateTokenPair = async (payload, publicKey, privateKey) => {}
+const generateToken = (
+  payload: object
+): {
+  accessToken: string
+  refreshToken: string
+} => {
+  const private_key = process.env.PRIVATE_KEY
+  if (!private_key) {
+    throw new Error('Missing private key')
   }
+  const accessToken = JWT.sign(payload, private_key, {
+    algorithm: 'RS256',
+    expiresIn: config.ACCESS_TOKEN_EXPIRE
+  })
 
-  // Hash API key để lưu vào DB
-  static hashApiKey(apiKey: string): string {
-    return crypto.createHash('sha256').update(apiKey).digest('hex')
-  }
+  const refreshToken = JWT.sign(payload, private_key, {
+    algorithm: 'RS256',
+    expiresIn: config.REFRESH_TOKEN_EXPIRE
+  })
+  return { accessToken, refreshToken }
 }
 
-export class ApiKeyService {
-  static checkApiKey(req: Request, res: Response, next: NextFunction) {
-    const key =
-      req.headers[HEADER.API_KEY as keyof typeof req.headers]?.toString()
+export { generateToken }
+// export class ApiKeyService {
+//   static checkApiKey(req: Request, res: Response, next: NextFunction) {
+//     const key =
+//       req.headers[HEADER.API_KEY as keyof typeof req.headers]?.toString()
 
-    if (!key) {
-      return new ForbiddenError('Failed to check API key')
-    }
+//     if (!key) {
+//       return new ForbiddenError('Failed to check API key')
+//     }
 
-    // const objKey = await findKeyByUserId(key)
-  }
-}
+//     // const objKey = await findKeyByUserId(key)
+//   }
+// }

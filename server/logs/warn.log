@@ -1,3 +1,43 @@
 2024-11-14 10:26:37:2637 [[31merror[39m]:: [31mRoute not found[39m
 2024-11-14 10:27:34:2734 [[31merror[39m]:: [31mRoute /api/v1/user/test not found[39m
 2024-11-14 13:23:21:2321 [[31merror[39m]:: [31mInvalid status code: fail[39m
+2024-11-26 23:46:46:4646 [[31merror[39m]:: [31mRoute /favicon.ico not found[39m
+2024-11-26 23:46:50:4650 [[31merror[39m]:: [31mRoute /api/auth not found[39m
+2024-11-26 23:47:48:4748 [[31merror[39m]:: [31mRoute /api/auth not found[39m
+2024-11-26 23:47:48:4748 [[31merror[39m]:: [31mRoute /favicon.ico not found[39m
+2024-11-26 23:47:48:4748 [[31merror[39m]:: [31mRoute /favicon.ico not found[39m
+2024-11-26 23:48:17:4817 [[31merror[39m]:: [31mRoute /api/auth/sign-in not found[39m
+2024-11-28 23:16:48:1648 [[31merror[39m]:: [31mNot Found[39m
+2024-11-28 23:25:29:2529 [[31merror[39m]:: [31mRoute /api/v1/auth/sign not found[39m
+2024-11-28 23:25:36:2536 [[31merror[39m]:: [31mRoute /api/v1/auth/sign not found[39m
+2024-11-28 23:25:42:2542 [[31merror[39m]:: [31mRoute /api/v1/auth/sign- not found[39m
+2024-11-28 23:25:44:2544 [[31merror[39m]:: [31mRoute /api/v1/auth/sign-up not found[39m
+2024-11-28 23:25:47:2547 [[31merror[39m]:: [31mRoute /api/v1/auth/sign-up not found[39m
+2024-11-29 11:15:12:1512 [[31merror[39m]:: [31mRoute /api/v1/auth/sign-up not found[39m
+2024-11-29 13:12:23:1223 [[31merror[39m]:: [31mInvalid Credentials[39m
+2024-11-29 13:12:27:1227 [[31merror[39m]:: [31mInvalid Credentials[39m
+2024-11-29 13:12:29:1229 [[31merror[39m]:: [31mInvalid Credentials[39m
+2024-11-29 13:33:15:3315 [[31merror[39m]:: [31mUser already exists[39m
+2024-11-29 14:54:40:5440 [[31merror[39m]:: [31mUser not found[39m
+2024-11-29 15:05:21:521 [[31merror[39m]:: [31mUser not found[39m
+2024-11-29 15:06:19:619 [[31merror[39m]:: [31mUser not found[39m
+2024-11-29 15:07:16:716 [[31merror[39m]:: [31mUser not found[39m
+2024-11-29 15:08:46:846 [[31merror[39m]:: [31mInvalid Credentials[39m
+2024-11-29 15:09:14:914 [[31merror[39m]:: [31mInvalid Credentials[39m
+2024-11-29 15:09:47:947 [[31merror[39m]:: [31mInvalid Credentials[39m
+2024-11-29 16:17:38:1738 [[31merror[39m]:: [31mRoute /api/v1/auth/sign-out not found[39m
+2024-11-29 16:17:44:1744 [[31merror[39m]:: [31mRoute /api/v1/auth/sign-out not found[39m
+2024-11-29 16:19:49:1949 [[31merror[39m]:: [31mRoute /api/v1/auth/sign-out not found[39m
+2024-11-29 16:19:51:1951 [[31merror[39m]:: [31mRoute /api/v1/auth/sign-out not found[39m
+2024-11-29 16:19:51:1951 [[31merror[39m]:: [31mRoute /api/v1/auth/sign-out not found[39m
+2024-11-29 16:20:05:205 [[31merror[39m]:: [31mRoute /api/v1/auth/sign-out not found[39m
+2024-11-29 16:20:15:2015 [[31merror[39m]:: [31mRoute /api/v1/auth/sign-out not found[39m
+2024-11-29 16:20:35:2035 [[31merror[39m]:: [31mRoute /api/v1/auth/sign-out not found[39m
+2024-11-29 16:20:40:2040 [[31merror[39m]:: [31mRoute /api/v1/auth/sign-out not found[39m
+2024-11-29 16:20:44:2044 [[31merror[39m]:: [31mRoute /api/v1/auth/sign-out not found[39m
+2024-11-29 16:21:25:2125 [[31merror[39m]:: [31mRoute /api/v1/auth/sign-out not found[39m
+2024-11-29 16:21:28:2128 [[31merror[39m]:: [31mRoute /api/v1/auth/sign-out not found[39m
+2024-11-29 16:21:35:2135 [[31merror[39m]:: [31mRoute /api/v1/auth/sign-out not found[39m
+2024-11-29 16:21:37:2137 [[31merror[39m]:: [31mRoute /api/v1/auth/sign-out not found[39m
+2024-11-29 16:25:25:2525 [[31merror[39m]:: [31mRoute /api/v1/auth/sign-out not found[39m
+2024-11-29 16:26:06:266 [[31merror[39m]:: [31mRoute /api/v1/auth/sign-out not found[39m
