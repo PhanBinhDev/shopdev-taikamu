@@ -1,22 +1,17 @@
 import { Response } from 'express'
 import { StatusCodes, ReasonPhrases } from 'http-status-codes'
-
-type ConstructorSuccess = {
-  message: string
-  statusCode?: StatusCodes
-  metadata: object
-}
+import { SuccessConstructor } from '~/types'
 
 export class SuccessResponse {
   statusCode: StatusCodes
   message: string
-  metadata: object
-  options?: object
+  metadata: any;
+  [key: string]: any
   constructor({
     message = ReasonPhrases.OK,
     statusCode = StatusCodes.OK,
     metadata = {}
-  }: ConstructorSuccess) {
+  }: SuccessConstructor) {
     this.statusCode = statusCode
     this.message = message
     this.metadata = metadata
@@ -39,7 +34,7 @@ export class CREATED extends SuccessResponse {
     options = {}
   }: {
     message: string
-    metadata: object
+    metadata: any
     options?: object
   }) {
     super({ message, statusCode: StatusCodes.CREATED, metadata })

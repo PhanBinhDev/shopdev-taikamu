@@ -1,7 +1,9 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Home, ArrowRight } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 
 export default function NotFound() {
+  const navigate = useNavigate()
   return (
     <div className='min-h-screen bg-gray-100 flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8'>
       <div className='text-center max-w-md w-full bg-white p-8 rounded-lg shadow-md'>
@@ -14,15 +16,16 @@ export default function NotFound() {
           trang đã bị xóa hoặc URL không chính xác.
         </p>
         <div className='space-y-4'>
-          <Link
-            to='/'
-            className='inline-flex items-center justify-center w-full px-4 py-2 text-base font-medium text-white bg-primary rounded-md hover:bg-[#009c5d] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary'>
+          <Button
+            onClick={() => navigate(-1)}
+            size='lg'
+            className='inline-flex items-center justify-center w-full px-4 py-2 text-base font-medium text-white bg-primary rounded-md hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary'>
             <Home className='mr-2 h-5 w-5' />
-            Quay về Trang chủ
-          </Link>
+            Quay lại
+          </Button>
           <Link
             to='/products'
-            className='inline-flex items-center justify-center w-full px-4 py-2 text-base font-medium text-primary bg-white border border-primary rounded-md hover:bg-[#e6f7f0] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary'>
+            className='inline-flex items-center justify-center w-full px-4 py-2 text-base font-medium text-primary bg-white border border-primary rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary'>
             Xem sản phẩm
             <ArrowRight className='ml-2 h-5 w-5' />
           </Link>

@@ -1,16 +1,15 @@
-import { StrictMode, Suspense } from 'react'
+import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { App } from './App'
 import '@/index.css'
-import LoadingScreen from '@/components/loading-screen'
+import { Toaster } from '@/components/ui/toaster'
 import { ErrorBoundary } from '@/components/error-boundary'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <Suspense fallback={<LoadingScreen />}>
-      <ErrorBoundary>
-        <App />
-      </ErrorBoundary>
-    </Suspense>
+    <ErrorBoundary>
+      <App />
+      <Toaster />
+    </ErrorBoundary>
   </StrictMode>
 )

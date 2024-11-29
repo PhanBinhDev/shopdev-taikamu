@@ -13,7 +13,9 @@ const config = {
   SESSION_SECRET:
     process.env.SESSION_SECRET ||
     '3e13a17769bf4df95a53b18b883f9a03116ba79b07e5e7292c68b74926',
-  COOKIE_MAX_AGE: process.env.COOKIE_MAX_AGE || '1h'
+  COOKIE_MAX_AGE: process.env.COOKIE_MAX_AGE || '1h',
+  ACCESS_TOKEN_EXPIRE: process.env.ACCESS_TOKEN_EXPIRE || '15m',
+  REFRESH_TOKEN_EXPIRE: process.env.REFRESH_TOKEN_EXPIRE || '7d'
 }
 
 export default config

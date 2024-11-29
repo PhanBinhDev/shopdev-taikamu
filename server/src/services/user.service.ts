@@ -1,42 +1,52 @@
 import bcrypt from 'bcrypt'
-import { CreateUserDto } from '~/dtos/CreateUser.dto'
 import { db } from '~/lib/db'
-import { BadRequestError } from '~/utils/errors'
+import { BadRequestError } from '~/core/error.response'
+import { IUserDTO } from '~/dtos/user.dto'
+import { SALTS } from '~/constants'
+import { getInfoData } from '~/utils'
+import { generateToken } from '~/utils/auth'
 
 class UserService {
-  registerUser = async (body: CreateUserDto) => {
-    const foundUser = await db.user.findUnique({
+  static createUser = async (data: IUserDTO) => {
+    const { email, name, password, role, imageUrl } = data
+    const holderUser = await db.user.findFirst({
       where: {
-        email: body.email
+        email
       }
     })
 
-    if (foundUser) {
-      throw new BadRequestError(
-        `User with email: ${body.email} already registered'`
-      )
+    if (holderUser) {
+      throw new BadRequestError({
+        message: 'User already exists'
+      })
     }
 
-    const salt = await bcrypt.genSalt(10)
-    const hashedPassword = await bcrypt.hash(body.password, salt)
+    const hashedPassword = await bcrypt.hash(password, SALTS)
     const user = await db.user.create({
       data: {
-        email: body.email,
-        name: body.name,
+        email,
+        name,
         password: hashedPassword,
-        imageUrl: body.imageUrl || null
+        role,
+        imageUrl
       }
     })
 
+    const payload = getInfoData({
+      fields: ['id', 'email'],
+      object: user
+    })
+
+    const tokens = generateToken(payload)
+
     return {
-      id: user.id,
-      name: user.name,
-      email: user.email,
-      imageUrl: user.imageUrl,
-      role: user.role,
-      isActive: user.isActive
+      user: getInfoData({
+        fields: ['id', 'name', 'email', 'role', 'imageUrl'],
+        object: user
+      }),
+      tokens
     }
   }
 }
 
-export default new UserService()
+export default UserService

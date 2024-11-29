@@ -1,5 +1,9 @@
 // DTO interface
-export interface LoginDTO {
+export interface SignInDTO {
   email: string
   password: string
+}
+
+export interface SignUpDTO extends SignInDTO {
+  name: string
 }
