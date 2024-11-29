@@ -70,3 +70,4 @@
 2024-11-29 16:25:25:2525 [[35mhttp[39m]:: [35mDELETE /api/v1/auth/sign-out null 7ms[39m
 2024-11-29 16:26:06:266 [[31merror[39m]:: [31mRoute /api/v1/auth/sign-out not found[39m
 2024-11-29 16:26:06:266 [[35mhttp[39m]:: [35mDELETE /api/v1/auth/sign-out null 1ms[39m
+2024-11-29 18:19:12:1912 [[31merror[39m]:: [31mUser not found[39m
