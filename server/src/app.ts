@@ -3,7 +3,7 @@ import helmet from 'helmet'
 import cors from 'cors'
 import morgan from 'morgan'
 import path from 'path'
-import session from 'express-session'
+import cookieParser from 'cookie-parser'
 
 import router from '~/routes'
 import config from '~/configs/env.config'
@@ -31,14 +31,7 @@ export function createApp() {
   app.use(morgan('dev'))
   app.use(helmet())
   app.use(express.json())
-  app.use(
-    session({
-      secret: config.SESSION_SECRET,
-      cookie: { maxAge: +config.COOKIE_MAX_AGE, secure: isProduction },
-      resave: false,
-      saveUninitialized: false
-    })
-  )
+  app.use(cookieParser())
 
   // all routes
   app.use('/api/v1', router)

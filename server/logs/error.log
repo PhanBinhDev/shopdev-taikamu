@@ -42,3 +42,107 @@
 2024-11-29 16:25:25:2525 [[31merror[39m]:: [31mRoute /api/v1/auth/sign-out not found[39m
 2024-11-29 16:26:06:266 [[31merror[39m]:: [31mRoute /api/v1/auth/sign-out not found[39m
 2024-11-29 18:19:12:1912 [[31merror[39m]:: [31mUser not found[39m
+2024-11-30 10:03:18:318 [[31merror[39m]:: [31mCannot read properties of undefined (reading 'access_token')[39m
+2024-11-30 10:04:02:42 [[31merror[39m]:: [31mCannot read properties of undefined (reading 'access_token')[39m
+2024-11-30 13:50:22:5022 [[31merror[39m]:: [31mRoute /api/v1/auth/refresh-token not found[39m
+2024-11-30 13:50:24:5024 [[31merror[39m]:: [31mRoute /api/v1/auth/refresh-token not found[39m
+2024-11-30 13:51:47:5147 [[31merror[39m]:: [31mRoute /api/v1/auth/refresh-token not found[39m
+2024-11-30 13:52:28:5228 [[31merror[39m]:: [31mRoute /api/v1/auth/refresh-token not found[39m
+2024-11-30 13:52:49:5249 [[31merror[39m]:: [31mRoute /api/v1/auth/refresh-token not found[39m
+2024-11-30 13:53:16:5316 [[31merror[39m]:: [31mRoute /api/v1/auth/refresh-token not found[39m
+2024-11-30 13:53:19:5319 [[31merror[39m]:: [31mRoute /api/v1/auth/refresh-token not found[39m
+2024-11-30 13:53:22:5322 [[31merror[39m]:: [31mRoute /api/v1/auth/refresh-token not found[39m
+2024-11-30 13:53:34:5334 [[31merror[39m]:: [31mRoute /api/v1/auth/refresh-token not found[39m
+2024-11-30 13:53:46:5346 [[31merror[39m]:: [31mRoute /api/v1/auth/refresh-token not found[39m
+2024-11-30 13:54:27:5427 [[31merror[39m]:: [31mRoute /api/v1/auth/refresh-token not found[39m
+2024-11-30 13:54:31:5431 [[31merror[39m]:: [31mRoute /api/v1/auth/refresh-token not found[39m
+2024-11-30 13:54:41:5441 [[31merror[39m]:: [31mRoute /api/v1/auth/refresh-token not found[39m
+2024-11-30 13:54:49:5449 [[31merror[39m]:: [31mRoute /api/v1/auth/refresh-token not found[39m
+2024-11-30 13:56:01:561 [[31merror[39m]:: [31mRoute /api/v1/auth/refresh-token not found[39m
+2024-11-30 22:59:03:593 [[31merror[39m]:: [31m[39m
+[31mInvalid `db.token.create()` invocation in[39m
+[31mE:\Workspace\Project\mern-auth-ts\server\src\services\auth.service.ts:54:20[39m
+
+[31m  51 const tokens = generateToken(payload)[39m
+[31m  52 [39m
+[31m  53 // Save token to database[39m
+[31m→ 54 await db.token.create({[39m
+[31m       data: {[39m
+[31m         token: "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzY2YwNGVlLWViZDUtNGJkYi1hNWM3LTgzOGY3OGFhMDFjNSIsImVtYWlsIjoiYmluaHBoYW4uZGV2QGdtYWlsLmNvbSIsImlhdCI6MTczMjk4MjM0MiwiZXhwIjoxNzMzMDY4NzQyfQ.cR8Hg3RTezswVjcoWCCH1dsQlY3F17MF-oZzrqjfrhDSMMS9oq5T_IUJNWFL0qe9XHlliQN8fZSehl_NgkpcN5BU3rfcPJXDuiiAVVgQi7t0OOk87-XGi4vip26gi8L2OQDefQOMc-DRaOmpiZ2LrSX4pd4-_4v2KyOZFqeIrsmSvy8LjtfbjCAlk6DGvgYpQuEj3X_cTJYwtLnBr_VHSlnoBzbKVLp6NAO_LZfvKuod5axpQJm0HIwrhLxRqYWsE8H9yxzXci70jWUdcrsLiv3ZRowlqU4fr17GnYFhDHGoIBj18GusA36AdhIBkgX_ZmpZKDXSqpNoEc7zoBp5JA",[39m
+[31m         expiresAt: "1d",[39m
+[31m                    ~~~~[39m
+[31m         userId: "63cf04ee-ebd5-4bdb-a5c7-838f78aa01c5",[39m
+[31m         deviceId: "197a5307-7868-48d2-8de1-604c94a18ed9",[39m
+[31m         ipAddress: "::1",[39m
+[31m         userAgent: "PostmanRuntime/7.43.0"[39m
+[31m       }[39m
+[31m     })[39m
+
+[31mInvalid value for argument `expiresAt`: premature end of input. Expected ISO-8601 DateTime.[39m
+2024-11-30 23:02:00:20 [[31merror[39m]:: [31mRoute /api/v1/auth/refresh-token not found[39m
+2024-11-30 23:02:00:20 [[31merror[39m]:: [31mRoute /api/v1/auth/refresh-token not found[39m
+2024-11-30 23:02:02:22 [[31merror[39m]:: [31mRoute /api/v1/auth/refresh-token not found[39m
+2024-12-01 09:10:44:1044 [[31merror[39m]:: [31mRoute /api/v1/auth/refresh-token not found[39m
+2024-12-01 09:10:44:1044 [[31merror[39m]:: [31mRoute /api/v1/auth/refresh-token not found[39m
+2024-12-01 09:11:04:114 [[31merror[39m]:: [31mRoute /api/v1/auth/refresh-token not found[39m
+2024-12-01 09:25:13:2513 [[31merror[39m]:: [31mRoute /api/v1/auth/refresh-token not found[39m
+2024-12-01 09:25:13:2513 [[31merror[39m]:: [31mRoute /api/v1/auth/refresh-token not found[39m
+2024-12-01 09:25:43:2543 [[31merror[39m]:: [31mRoute /api/v1/auth/refresh-token not found[39m
+2024-12-01 09:26:20:2620 [[31merror[39m]:: [31mRoute /api/v1/auth/refresh-token not found[39m
+2024-12-01 09:27:18:2718 [[31merror[39m]:: [31mRoute /api/v1/auth/refresh-token not found[39m
+2024-12-01 09:27:36:2736 [[31merror[39m]:: [31mRoute /api/v1/auth/refresh-token not found[39m
+2024-12-01 09:27:47:2747 [[31merror[39m]:: [31mRoute /api/v1/auth/refresh-token not found[39m
+2024-12-01 09:28:01:281 [[31merror[39m]:: [31mRoute /api/v1/auth/refresh-token not found[39m
+2024-12-01 09:28:02:282 [[31merror[39m]:: [31mRoute /api/v1/auth/refresh-token not found[39m
+2024-12-01 09:28:42:2842 [[31merror[39m]:: [31mRoute /api/v1/auth/refresh-token not found[39m
+2024-12-01 09:28:44:2844 [[31merror[39m]:: [31mRoute /api/v1/auth/refresh-token not found[39m
+2024-12-01 09:28:53:2853 [[31merror[39m]:: [31mRoute /api/v1/auth/refresh-token not found[39m
+2024-12-01 09:29:17:2917 [[31merror[39m]:: [31mRoute /api/v1/auth/refresh-token not found[39m
+2024-12-01 09:29:20:2920 [[31merror[39m]:: [31mRoute /api/v1/auth/refresh-token not found[39m
+2024-12-01 09:57:38:5738 [[31merror[39m]:: [31mRoute /api/v1/auth/refresh-token not found[39m
+2024-12-01 10:47:49:4749 [[31merror[39m]:: [31mInvalid token payload[39m
+2024-12-01 10:49:47:4947 [[31merror[39m]:: [31mInvalid token payload[39m
+2024-12-01 10:51:05:515 [[31merror[39m]:: [31mInvalid token payload[39m
+2024-12-01 10:52:31:5231 [[31merror[39m]:: [31mInvalid token payload[39m
+2024-12-01 10:53:21:5321 [[31merror[39m]:: [31mToken not found or revoked[39m
+2024-12-01 10:54:23:5423 [[31merror[39m]:: [31mToken not found or revoked[39m
+2024-12-01 10:55:42:5542 [[31merror[39m]:: [31mToken not found or revoked[39m
+2024-12-01 10:57:32:5732 [[31merror[39m]:: [31mToken not found or revoked[39m
+2024-12-01 11:00:30:030 [[31merror[39m]:: [31mToken not found or revoked[39m
+2024-12-01 12:08:25:825 [[31merror[39m]:: [31m[39m
+[31mInvalid `db.user.findUnique()` invocation in[39m
+[31mE:\Workspace\Project\mern-auth-ts\server\src\services\auth.service.ts:93:37[39m
+
+[31m  90 static refreshToken = async (res: Response, req: Request) => {[39m
+[31m  91   const { id } = req.user ?? {}[39m
+[31m  92 [39m
+[31m→ 93   const existUser = await db.user.findUnique([39m
+[31mThe column `User.birthDate` does not exist in the current database.[39m
+2024-12-01 12:09:58:958 [[31merror[39m]:: [31m[39m
+[31mInvalid `db.token.findFirst()` invocation in[39m
+[31mE:\Workspace\Project\mern-auth-ts\server\src\utils\auth.ts:124:40[39m
+
+[31m  121   isActive: true,[39m
+[31m  122   ipAddress: req.ip[39m
+[31m  123 })[39m
+[31m→ 124 const tokenRecord = await db.token.findFirst([39m
+[31mCan't reach database server at `ep-falling-band-a5fzyopl.us-east-2.aws.neon.tech:5432`[39m
+
+[31mPlease make sure your database server is running at `ep-falling-band-a5fzyopl.us-east-2.aws.neon.tech:5432`.[39m
+2024-12-01 12:10:14:1014 [[31merror[39m]:: [31m[39m
+[31mInvalid `db.user.findUnique()` invocation in[39m
+[31mE:\Workspace\Project\mern-auth-ts\server\src\services\auth.service.ts:93:37[39m
+
+[31m  90 static refreshToken = async (res: Response, req: Request) => {[39m
+[31m  91   const { id } = req.user ?? {}[39m
+[31m  92 [39m
+[31m→ 93   const existUser = await db.user.findUnique([39m
+[31mThe column `User.birthDate` does not exist in the current database.[39m
+2024-12-01 12:14:03:143 [[31merror[39m]:: [31mToken not found or revoked[39m
+2024-12-01 13:09:27:927 [[31merror[39m]:: [31mRoute /api/v1/auth/sign-out not found[39m
+2024-12-01 13:09:57:957 [[31merror[39m]:: [31mRoute /api/v1/auth/sign-out not found[39m
+2024-12-01 13:11:49:1149 [[31merror[39m]:: [31mInvalid Credentials[39m
+2024-12-01 13:11:49:1149 [[31merror[39m]:: [31mNo refresh token provided[39m
+2024-12-01 13:12:31:1231 [[31merror[39m]:: [31mInvalid Credentials[39m
+2024-12-01 13:12:31:1231 [[31merror[39m]:: [31mNo refresh token provided[39m
+2024-12-01 13:25:48:2548 [[31merror[39m]:: [31mInvalid Credentials[39m
