@@ -4,7 +4,7 @@ import { useAuthStore } from '@/store/useAuthStore'
 import { AxiosResponse } from 'axios'
 
 export const useRefreshToken = () => {
-  const { setAccessToken } = useAuthStore()
+  // const {} = useAuthStore()
 
   return useQuery({
     queryKey: ['refresh-token'],

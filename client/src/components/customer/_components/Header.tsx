@@ -27,8 +27,8 @@ import { useAuth } from '@/hooks/useAuth'
 
 function HeaderCustomer() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const { isAuthenticated } = useAuth()
-  const { user, signOut } = useAuthStore()
+  const { isAuthenticated, signOut } = useAuth()
+  const { user } = useAuthStore()
   return (
     <header className='sticky top-0 z-50 w-full bg-background/95 border-b backdrop-blur supports-[backdrop-filter]:bg-background/60'>
       <div className='container flex h-16 items-center'>
@@ -101,13 +101,15 @@ function HeaderCustomer() {
                   <ShoppingBasket />
                   Orders
                 </DropdownMenuItem>
-                <DropdownMenuItem className='cursor-pointer'>
-                  <Cog /> Settings
-                </DropdownMenuItem>
+                <Link to={'/settings'}>
+                  <DropdownMenuItem className='cursor-pointer'>
+                    <Cog /> Settings
+                  </DropdownMenuItem>
+                </Link>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem
                   className='cursor-pointer hover:bg-default-50'
-                  onClick={signOut}>
+                  onClick={() => signOut()}>
                   <LogOut /> Đăng xuất
                 </DropdownMenuItem>
               </DropdownMenuContent>

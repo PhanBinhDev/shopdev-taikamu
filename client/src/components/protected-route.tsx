@@ -16,7 +16,6 @@ export function ProtectedRoute({
 }: ProtectedRouteProps) {
   const { isAuthenticated, user } = useAuth()
   if (isAuthenticated && allowedRole !== user?.role) {
-    console.log('RUN 1')
     const fallbackRoute =
       user?.role === 'SHOP_OWNER'
         ? '/shop'
