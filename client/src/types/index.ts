@@ -9,3 +9,20 @@ export interface IUser {
   gender?: 'male' | 'female' | 'other'
   birthDate?: Date
 }
+
+export interface Banner {
+  id: string
+  imageUrl: string
+  title: string
+  link: string
+  startDate: Date
+  endDate: Date
+  isActive: boolean
+  order: number
+}
+
+export interface BannerSection {
+  id: string
+  name: string
+  banners: Banner[]
+}
