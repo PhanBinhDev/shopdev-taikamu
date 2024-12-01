@@ -4,5 +4,8 @@ export interface IUser {
   email: string
   role: 'CUSTOMER' | 'SHOP_OWNER' | 'ADMIN'
   isActive: boolean
-  imageUrl: string
+  imageUrl?: string
+  phoneNumber?: string
+  gender?: 'male' | 'female' | 'other'
+  birthDate?: Date
 }

@@ -1,21 +1,21 @@
 import { useMutation } from '@tanstack/react-query'
-import { authApi } from '@/services/api/auth'
-import { useAuthStore } from '@/store/useAuthStore'
-import { SignUpDTO } from '@/types/auth'
 import { useToast } from '@/hooks/useToast'
 import { AxiosError } from 'axios'
+import { userApi } from '@/services/api/user'
+import { UpdateProfileDTO } from '@/types/user'
+import { useAuthStore } from '@/store/useAuthStore'
 
-export const useSignUp = () => {
+export const useUpdateProfile = () => {
   const { setUser } = useAuthStore()
   const { toast } = useToast()
   return useMutation({
-    mutationFn: (data: SignUpDTO) => authApi.signUp(data),
+    mutationFn: (data: UpdateProfileDTO) => userApi.updateProfile(data),
     onSuccess: (response) => {
-      const { user } = response.data
+      const { user } = response.data.metadata
       setUser(user)
       toast({
         title: 'Success',
-        description: 'Signed in successfully'
+        description: 'Cập nhập thông tin thành công'
       })
     },
     onError: (error) => {
