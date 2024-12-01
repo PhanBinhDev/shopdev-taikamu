@@ -12,7 +12,7 @@ function ProfileLayout() {
   const userRank = 'Thành viên Bạc'
   const { user } = useAuthStore()
   return (
-    <div className='mx-auto container bg-gray-50'>
+    <div className='mx-auto container'>
       <div className=' py-4 md:p-8'>
         <div className='grid gap-6 md:grid-cols-[300px_1fr]'>
           {/* Card user */}

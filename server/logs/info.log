@@ -146,3 +146,14 @@
 2024-12-01 13:12:31:1231 [[31merror[39m]:: [31mInvalid Credentials[39m
 2024-12-01 13:12:31:1231 [[31merror[39m]:: [31mNo refresh token provided[39m
 2024-12-01 13:25:48:2548 [[31merror[39m]:: [31mInvalid Credentials[39m
+2024-12-01 17:43:31:4331 [[31merror[39m]:: [31m[39m
+[31mInvalid `db.token.findFirst()` invocation in[39m
+[31mE:\Workspace\Project\mern-auth-ts\server\src\utils\auth.ts:123:40[39m
+
+[31m  120   throw new AuthFailureError({ message: 'Invalid token payload' })[39m
+[31m  121 }[39m
+[31m  122 [39m
+[31m→ 123 const tokenRecord = await db.token.findFirst([39m
+[31mCan't reach database server at `ep-falling-band-a5fzyopl.us-east-2.aws.neon.tech:5432`[39m
+
+[31mPlease make sure your database server is running at `ep-falling-band-a5fzyopl.us-east-2.aws.neon.tech:5432`.[39m

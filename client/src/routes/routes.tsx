@@ -23,12 +23,17 @@ const Favorites = lazy(() => import('@/pages/customer/favorites'))
 // Settings Page
 const Settings = lazy(() => import('@/pages/customer/settings'))
 
+// Homepage
+const HomePage = lazy(() => import('@/pages/customer/home-page'))
+// View all category
+const CategoryList = lazy(() => import('@/pages/customer/category-list'))
+
 export const routes = [
   {
     path: '',
     element: <CustomerLayout />,
     children: [
-      { index: true, element: <div>Home Page</div> },
+      { index: true, element: <HomePage /> },
       { path: 'products', element: <div>Product list</div> },
       {
         path: 'profile',
@@ -45,6 +50,10 @@ export const routes = [
           { path: 'notifications', element: <Notification /> },
           { path: 'favorites', element: <Favorites /> }
         ]
+      },
+      {
+        path: 'categories',
+        element: <CategoryList />
       },
       {
         path: 'settings',
