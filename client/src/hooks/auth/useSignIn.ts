@@ -20,7 +20,6 @@ export const useSignIn = () => {
         title: 'Success',
         description: 'Logged in successfully'
       })
-      console.log(location)
       navigate(location.state)
     },
     onError: (error) => {

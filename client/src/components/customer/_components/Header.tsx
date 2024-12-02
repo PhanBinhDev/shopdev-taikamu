@@ -2,7 +2,13 @@ import { useState } from 'react'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { Button } from '@/components/ui/button'
 import {
+  Bell,
   Cog,
+  Download,
+  Facebook,
+  Globe,
+  HelpCircle,
+  Instagram,
   LogOut,
   Menu,
   Search,
@@ -31,6 +37,51 @@ function HeaderCustomer() {
   const { user } = useAuthStore()
   return (
     <header className='sticky top-0 z-50 w-full bg-background/95 border-b backdrop-blur supports-[backdrop-filter]:bg-background/60'>
+      <div className='bg-primary text-white'>
+        <div className='container flex items-center justify-between h-8 text-sm'>
+          <div className='flex items-center gap-4'>
+            <Link to='/seller-register' className='hover:opacity-80'>
+              Kênh Người Bán
+            </Link>
+            <div className='h-4 w-px bg-white/30' />
+            <Link
+              to='/download'
+              className='flex items-center gap-1 hover:opacity-80'>
+              <Download className='h-4 w-4' />
+              Tải ứng dụng
+            </Link>
+            <div className='h-4 w-px bg-white/30' />
+            <div className='flex items-center gap-2'>
+              Kết nối
+              <Link to='https://facebook.com' className='hover:opacity-80'>
+                <Facebook className='h-4 w-4' />
+              </Link>
+              <Link to='https://instagram.com' className='hover:opacity-80'>
+                <Instagram className='h-4 w-4' />
+              </Link>
+            </div>
+          </div>
+
+          <div className='flex items-center gap-4'>
+            <Link
+              to='/notifications'
+              className='flex items-center gap-1 hover:opacity-80'>
+              <Bell className='h-4 w-4' />
+              Thông Báo
+            </Link>
+            <Link
+              to='/support'
+              className='flex items-center gap-1 hover:opacity-80'>
+              <HelpCircle className='h-4 w-4' />
+              Hỗ Trợ
+            </Link>
+            <div className='flex items-center gap-1 hover:opacity-80 cursor-pointer'>
+              <Globe className='h-4 w-4' />
+              Tiếng Việt
+            </div>
+          </div>
+        </div>
+      </div>
       <div className='container flex h-16 items-center'>
         <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
           <SheetTrigger asChild>

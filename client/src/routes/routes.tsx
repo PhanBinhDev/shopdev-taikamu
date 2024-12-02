@@ -27,6 +27,7 @@ const Settings = lazy(() => import('@/pages/customer/settings'))
 const HomePage = lazy(() => import('@/pages/customer/home-page'))
 // View all category
 const CategoryList = lazy(() => import('@/pages/customer/category-list'))
+const RegisterShop = lazy(() => import('@/pages/shop/register-shop'))
 
 export const routes = [
   {
@@ -65,6 +66,10 @@ export const routes = [
       },
       { path: 'auth', element: <AuthPage /> }
     ]
+  },
+  {
+    path: 'seller-register',
+    element: <RegisterShop />
   },
   {
     path: 'shop',
