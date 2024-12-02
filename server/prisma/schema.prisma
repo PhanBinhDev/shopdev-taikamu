@@ -93,12 +93,37 @@ model ApiKey {
 model Shop {
   id          String    @id @default(uuid())
   name        String
-  description String
+  description String?
+  logo        String?
+  banner      String?
+  phoneNumber String
+
+  // address
+  address       String
+  city          String
+  state         String
+  country       String
+  postalCode    String?
+
+  // Social Media Link
+  socials Json?
+  
+  isActive Boolean @default(true)
+  isFeatured Boolean @default(false)
+  rating Float?
+
+  // Các đơn hàng liên kết với shop 
+
   ownerId     String    @unique
   owner       User      @relation(fields: [ownerId], references: [id])
   apiKeys     ApiKey[]
   products    Product[]
   orders      Order[]
+  reviews     Review[]
+
+  // Shop policies
+  returnPolicy      String?
+  shippingPolicy    String?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -124,6 +149,8 @@ model Review {
   user      User     @relation(fields: [userId], references: [id])
   productId String
   product   Product  @relation(fields: [productId], references: [id])
+  shopId    String
+  shop      Shop      @relation(fields: [shopId], references: [id])
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

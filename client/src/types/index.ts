@@ -1,3 +1,5 @@
+import { LucideIcon } from 'lucide-react'
+
 export interface IUser {
   id: string
   name: string
@@ -25,4 +27,16 @@ export interface BannerSection {
   id: string
   name: string
   banners: Banner[]
+}
+
+export interface MenuItem {
+  title: string
+  url?: string
+  icon: LucideIcon
+  subItems?: MenuItem[] | []
+}
+
+export interface MenuConfig {
+  label: string
+  items: MenuItem[]
 }
